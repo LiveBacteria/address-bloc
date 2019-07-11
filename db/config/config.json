@@ -1,7 +1,6 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "password",
+    "username": "pooret1",
     "database": "address-bloc-dev",
     "host": "127.0.0.1",
     "dialect": "postgres",
@@ -9,9 +8,8 @@
     "port": 5432
   },
   "test": {
-    "username": "postgres",
-    "password": "password",
-    "database": "database_test",
+    "username": "pooret1",
+    "database": "address-bloc-test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "logging": false
