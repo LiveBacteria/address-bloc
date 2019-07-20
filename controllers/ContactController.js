@@ -7,12 +7,14 @@ module.exports = class ContactController {
         this.addContactQuestions = [
             {
                 type: "input",
-                name: "Contact's name - ",
+                name: "name",
+                message: "Contact's name - ",
                 validate(val){
                     return val !== "";
                 },
                 type: "input",
-                name: "Contact's phone number - ",
+                name: "phone",
+                message: "Contact's phone number - ",
                 validate(val){
                     return val !== "";
                 }
