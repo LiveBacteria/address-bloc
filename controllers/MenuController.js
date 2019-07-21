@@ -63,7 +63,7 @@ module.exports = class MenuController {
 
         // Declares and sets the date variables to be equal to the current date time I actually wrote this code back in december for my work :)
         let dt = new Date(),
-            result = (dt.getFullYear() + "/" + (''+(dt.getMonth()+1)).padStart(2,'0') + ('/'+dt.getDate()).padStart(2,'0') + " " + (''+dt.getHours()).padStart(2,'0') + ":" + (''+dt.getMinutes()).padStart(2,'0'));
+            result = (dt.getFullYear() + "/" + (''+(dt.getMonth()+1)).padStart(2,'0') + "/" + (''+dt.getDate()).padStart(2,'0') + " " + (''+dt.getHours()).padStart(2,'0') + ":" + (''+dt.getMinutes()).padStart(2,'0'));
 
         // Logs the result date time variable
         console.log("The current date and time is: " + result);
