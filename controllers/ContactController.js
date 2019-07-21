@@ -9,9 +9,11 @@ module.exports = class ContactController {
                 type: "input",
                 name: "name",
                 message: "Contact's name - ",
-                validate(val){
+                validate(val) {
                     return val !== "";
-                },
+                }
+            },
+            {
                 type: "input",
                 name: "phone",
                 message: "Contact's phone number - ",
@@ -25,4 +27,4 @@ module.exports = class ContactController {
     addContact(name, phone){
         return Contact.create({name, phone});
     }
-}
+};
