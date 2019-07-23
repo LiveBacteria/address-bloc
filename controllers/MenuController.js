@@ -10,6 +10,7 @@ module.exports = class MenuController {
                 message: "Please choose from an option from below: ",
                 choices: [
                     "Add new contact",
+                    "View all contacts",
                     "Date",
                     "Exit"
                 ]
@@ -23,6 +24,9 @@ module.exports = class MenuController {
             switch(response.mainMenuChoice){
                 case "Add new contact":
                     this.addContact();
+                    break;
+                case "View all contacts":
+                    this.getContacts();
                     break;
                 case "Date":
                     this.getDate();
@@ -47,13 +51,32 @@ module.exports = class MenuController {
     addContact(){
         this.clear();
         inquirer.prompt(this.book.addContactQuestions).then((answers) => {
-           this.book.addContact(answers.name, answers.phone, answer.email).then((contact) => {
+           this.book.addContact(answers.name, answers.phone, answers.email).then((contact) => {
                console.log("Contact: " + contact.dataValues.name + " was added successfully!");
                this.main();
            }).catch((err) => {
                console.log(err);
                this.main();
            });
+        });
+    }
+
+    getContacts(){
+        this.clear();
+
+        this.book.getContacts().then((contacts) => {
+            for (let contact of contacts) {
+                console.log(`
+          name: ${contact.name}
+          phone number: ${contact.phone}
+          email: ${contact.email}
+          ---------------`
+                );
+            }
+            this.main();
+        }).catch((err) => {
+            console.log(err);
+            this.main();
         });
     }
 
