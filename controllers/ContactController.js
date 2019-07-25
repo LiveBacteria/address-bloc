@@ -4,6 +4,25 @@ const Contact = require("../db/models").Contact;
 module.exports = class ContactController {
     constructor() {
         this.contacts = [];
+        this.deleteQuestions = [{
+            type: "confirm",
+            name: "selected",
+            message: "Please choose from an option below: ",
+            choices: [
+                "Delete Contact",
+                "Main Menu"
+            ]
+        }];
+        this.searchQuestions = [
+            {
+                type: "input",
+                name: "name",
+                message: "Name of contact to search - ",
+                validate(val){
+                    return val !== "";
+                }
+            }
+        ];
         this.addContactQuestions = [
             {
                 type: "input",
@@ -30,6 +49,12 @@ module.exports = class ContactController {
                 }
             }
         ];
+
+        this.deleteConfirmQuestions = [{
+           type: "confirm",
+           name: "confirmation",
+           message: "are you sure you want to delete this contact?"
+        }];
     }
 
     addContact(name, phone, email){
@@ -47,5 +72,33 @@ module.exports = class ContactController {
             }
         }
         return null;
+    }
+
+    binarySearch(contacts, target){
+        let min = 0,
+            max = contacts.length - 1,
+            mid;
+
+        while(mid < max){
+            mid = Math.floor((mid + max) /2);
+            let currentContact = contacts[mid];
+
+            if(currecntContact.name > target){
+                max = mid - 1;
+            }else if(currentContact.name < target){
+                min = mid + 1;
+            }else {
+                return contacts[mid];
+            }
+        }
+        return null;
+    }
+
+    search(name){
+        return Contact.findOne({where: {name}});
+    }
+
+    delete(id){
+        return Contact.destroy({where: {id}});
     }
 };
